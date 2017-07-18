@@ -7,4 +7,10 @@ class Comment < ActiveRecord::Base
 
   scope :saved_comments,  where('id NOT ?', nil)
 
+  def full_name
+    fname = name + ' '
+    fname += lastname
+    fname
+  end
+
 end

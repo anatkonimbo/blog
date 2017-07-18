@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(params[:comment].permit(:body, :tel))
     @comment.name = fname
     @comment.lastname = lname
-    @comment.save
+
     # @comment = @post.comments.create(params[:comment].permit(:name, :lastname, :body, :tel))
 
     if @comment.save

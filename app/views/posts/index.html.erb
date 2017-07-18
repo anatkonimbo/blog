@@ -1,13 +1,13 @@
 <% @posts.each do |post|  %>
    <div class="post_wrapper">
         <h2 class="title">
-          <%= link_to post.title , post %>
+          Title: <%= link_to post.title , post %>
         </h2>
         <p class="date">
-          <%= post.created_at.strftime("%B, %d, %Y") %>
+          Created at: <%= post.created_at.strftime("%B, %d, %Y") %>
         </p>
         <p class="amount">
-          <%= post.amount %>
+          Number of amount: <%= post.amount %>
         </p>
    </div>
 <% end %>

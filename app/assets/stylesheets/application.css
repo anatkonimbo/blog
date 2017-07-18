@@ -34,6 +34,33 @@ a {
 	color: inherit;
 }
 
+.post_wrapper {
+    border-bottom: 1px solid;
+}
+.comment_content {
+    border: 1px solid;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+p.delete {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    right: 40px;
+    left: auto;
+    height: 30px;
+}
+.commit {
+    position: relative;
+}
+p.delete a.button {
+    background: pink;
+}
+.buttons .button {
+    display: inline-block;
+    margin-left: 20px;
+}
 #sidebar {
 	width: 250px;
 	position: fixed;
