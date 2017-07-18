@@ -11,14 +11,12 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-
   end
 
 
   def create
     @post = Post.new(post_params)
-    @post.save
-
+    @post.calcu
     if @post.save
       redirect_to @post
     else
@@ -33,8 +31,8 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-
-    if @post.update_attributes(params[:post].permit(:title, :body))
+    @post.calcu
+    if @post.update_attributes(params[:post].permit(:title, :body, :amount))
       redirect_to @post
     else
       render 'edit'
@@ -51,6 +49,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title,:body)
+    params.require(:post).permit(:title,:body, :amount)
   end
 end

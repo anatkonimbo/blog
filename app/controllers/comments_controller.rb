@@ -2,9 +2,23 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.create(params[:comment].permit(:name, :body))
 
-    redirect_to post_path(@post)
+
+    debugger
+    fname = params[:comment][:fullname].split(" ")[0]
+    lname = params[:comment][:fullname].split(" ")[1]
+    @comment = @post.comments.new(params[:comment].permit(:body, :tel))
+    @comment.name = fname
+    @comment.lastname = lname
+    @comment.save
+    # @comment = @post.comments.create(params[:comment].permit(:name, :lastname, :body, :tel))
+
+    if @comment.save
+      redirect_to post_path(@post)
+    else
+      render 'posts/show'
+    end
+
   end
 
   def destroy
