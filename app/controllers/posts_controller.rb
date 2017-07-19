@@ -2,7 +2,6 @@ class PostsController < ApplicationController
 
   def index
       @posts = Post.all
-      @post.average_rate
   end
 
   def new

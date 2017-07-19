@@ -51,6 +51,15 @@ p.delete {
     left: auto;
     height: 30px;
 }
+p.edit {
+    position: absolute;
+    top: auto;
+    bottom: 30px;
+    margin: auto;
+    right: 40px;
+    left: auto;
+    height: 30px;
+}
 .commit {
     position: relative;
 }
