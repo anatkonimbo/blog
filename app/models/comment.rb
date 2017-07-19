@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
   belongs_to :post
-  attr_accessible :body, :name, :lastname, :tel
+  attr_accessible :body, :name, :lastname, :tel, :rate
   attr_accessor :fullname
 
   validates :tel, presence: true, length: { minimum: 9 }
@@ -12,5 +12,6 @@ class Comment < ActiveRecord::Base
     fname += lastname
     fname
   end
+
 
 end

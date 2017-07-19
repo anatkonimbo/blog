@@ -2,12 +2,9 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-
-
-    debugger
     fname = params[:comment][:fullname].split(" ")[0]
     lname = params[:comment][:fullname].split(" ")[1]
-    @comment = @post.comments.new(params[:comment].permit(:body, :tel))
+    @comment = @post.comments.new(params[:comment].permit(:body, :tel, :rate))
     @comment.name = fname
     @comment.lastname = lname
 

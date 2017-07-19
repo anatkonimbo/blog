@@ -13,7 +13,9 @@
   <%= f.text_area :body %>
 </p>
 
-<br />
+<p>
+rate:  <%= f.select :rate, (0..5) %>
+</p>
 
 <p>
   <%= f.submit %>
