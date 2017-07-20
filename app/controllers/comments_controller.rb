@@ -2,11 +2,7 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    fname = params[:comment][:fullname].split(" ")[0]
-    lname = params[:comment][:fullname].split(" ")[1]
-    @comment = @post.comments.new(params[:comment].permit(:body, :tel, :rate, :showCom))
-    @comment.name = fname
-    @comment.lastname = lname
+    @comment = @post.comments.new(params[:comment].permit(:body, :tel, :rate, :showCom, :fullname))
 
     if @comment.save
       redirect_to post_path(@post)
@@ -37,15 +33,6 @@ class CommentsController < ApplicationController
     @comment = @post.comments.find(params[:id])
     @comment.destroy
 
-    redirect_to post_path(@post)
-  end
-
-
-  def showcomment
-    debugger
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.find(params[:id])
-    @comment.update_all({showCom: true}, {id: params[:comment_ids]})
     redirect_to post_path(@post)
   end
 

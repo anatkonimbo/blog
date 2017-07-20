@@ -1,8 +1,8 @@
 <%= form_for ([@post, @comment.present? ? @comment : @post.comments.build]) do |f| %>
 
 <p>
-  <%= f.label :full_name %> </br>
-  <%= f.text_field :full_name %>
+  <%= f.label :fullname %> </br>
+  <%= f.text_field :fullname %>
 </p>
 
 <p>

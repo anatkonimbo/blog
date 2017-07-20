@@ -1,8 +1,6 @@
-<%= form_tag showcomment_comments_path, method: :put do %>
   <div class="commit clearfix">
-    <%= check_box_tag "comment_ids[]", comment.id %>
     <div class="comment_content">
-      <p class="comment_name"><span>Commet full name:</span> <strong><%=comment.full_name %></strong></p>
+      <p class="comment_name"><span>Commet full name:</span> <strong><%=comment.fullname %></strong></p>
       <p class="comment_body"><span>Commet body: </span><%= comment.body %></p>
       <p class="comment_time"><span>Commet created at: </span><%= time_ago_in_words(comment.created_at) %> ago </p>
 
@@ -28,6 +26,3 @@
       <%= link_to "Edit Comment", edit_post_comment_path(@post, comment) %>
     </p>
   </div>
-
-  <%= submit_tag "Show comment Checked" %>
-<% end %>
