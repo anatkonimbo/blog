@@ -7,6 +7,12 @@
     <b>Rate post average: </b><%= @post.avrRate %>
   </p>
 
+  <% if @post.tags .present? %>
+    <p class="tags">
+      <b>Tags Post: </b><%= raw @post.tags.split(', ').map { |t| link_to t, tag_path(t) }.join(', ')  %>
+    </p>
+  <% end %>
+
   <p class="body">
     <b>Post body: </b><%= @post.body %>
   </p>

@@ -1,6 +1,6 @@
 <div class="commit clearfix">
   <div class="comment_content">
-    <p class="comment_name"><span>Commet full name:</span> <strong><%=comment.full_name %></strong></p>
+    <p class="comment_name"><span>Commet full name:</span> <strong><%=comment.fullname %></strong></p>
     <p class="comment_body"><span>Commet body: </span><%= comment.body %></p>
     <p class="comment_time"><span>Commet created at: </span><%= time_ago_in_words(comment.created_at) %> ago </p>
     <p class="comment_rate"><span>Commet rate: </span>
@@ -18,4 +18,5 @@
                 class: "button",
                 data: { confirm: 'Are you sure?' } %>
   </p>
+
 </div>

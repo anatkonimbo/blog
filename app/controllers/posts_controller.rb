@@ -2,7 +2,8 @@ class PostsController < ApplicationController
 
   def index
       @posts = Post.all
-      @post.average_rate
+      # @post.average_rate
+      @Post = Post.order("title").page(params[:page]).per_page(2)
   end
 
   def new
@@ -36,7 +37,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.calcu
 
-    if @post.update_attributes(params[:post].permit(:title, :body, :amount, :avrRate))
+    if @post.update_attributes(params[:post].permit(:title, :tags, :body, :amount, :avrRate))
       redirect_to @post
     else
       render 'edit'
@@ -53,6 +54,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title,:body, :amount, :avrRate)
+    params.require(:post).permit(:title, :tags, :body, :amount, :avrRate)
   end
 end
