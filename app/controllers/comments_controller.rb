@@ -11,6 +11,21 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+
+    if @comment.update_attributes(params[:comment].permit(:body, :tel, :rate, :showCom))
+      redirect_to post_path(@post)
+    else
+      render 'edit'
+    end
+  end
 
   def destroy
     @post = Post.find(params[:post_id])
@@ -19,4 +34,6 @@ class CommentsController < ApplicationController
 
     redirect_to post_path(@post)
   end
+
+
 end

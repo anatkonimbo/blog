@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <%= form_for ([@post, @post.comments.build]) do |f| %>
+=======
+<%= form_for ([@post, @comment.present? ? @comment : @post.comments.build]) do |f| %>
+>>>>>>> showCom
 
 <p>
   <%= f.label :fullname %> </br>
@@ -15,9 +19,12 @@
 </p>
 
 <p>
-rate:  <%= f.select :rate, (0..5) %>
+    rate:  <%= f.select :rate, (0..5) %>
 </p>
 
+<p>
+    Show comment: <%= f.check_box :showCom %>
+</p>
 <p>
   <%= f.submit %>
 </p>

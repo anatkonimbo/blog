@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   belongs_to :post
+
   attr_accessible :body, :tel, :rate, :fullname
   attr_accessor :fullname
 
@@ -7,21 +8,21 @@ class Comment < ActiveRecord::Base
 
   scope :saved_comments,  where('id NOT ?', nil)
 
-  # setter
-   def fullname=(val)
-     self.name = val.split(' ')[0]
-     self.lastname = val.split(' ')[1]
-   end
 
-   # getter
-   def fullname
-     fname = ""
-      if name.present?
-        fname = name + ' '
-        fname += lastname
-      end
-      fname
-   end
+# setter
+def fullname=(val)
+  self.name = val.split(' ')[0]
+  self.lastname = val.split(' ')[1]
+end
 
+# getter
+def fullname
+  fname = ""
+   if name.present?
+     fname = name + ' '
+     fname += lastname
+   end
+   fname
+end
 
 end
