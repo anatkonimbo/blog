@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
 
-    if @comment.update_attributes(params[:comment].permit(:body, :tel, :rate, :showCom))
+    if @comment.update_attributes(params[:comment].permit(:body, :tel,:showCom, :rate))
       redirect_to post_path(@post)
     else
       render 'edit'

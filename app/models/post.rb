@@ -11,7 +11,6 @@ class Post < ActiveRecord::Base
   end
 
   def average_rate
-    debugger
       arr_rate= Comment.all.collect(&:rate).compact
       self.avrRate = (arr_rate.sum / arr_rate.size.to_f).round(2)
   end
