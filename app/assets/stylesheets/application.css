@@ -67,57 +67,55 @@ p.tags a {
 
 
 
+
 .pagination {
   background: white;
   cursor: default;
   height: 22px;
-  a, span, em {
+  }
+  .pagination a, .pagination span,.pagination em {
     padding: 0.2em 0.5em;
     display: block;
     float: left;
     margin-right: 1px;
   }
-  .disabled {
+  .pagination .disabled {
     color: #999999;
     border: 1px solid #dddddd;
   }
-  .current {
+  .pagination .current {
     font-style: normal;
     font-weight: bold;
-    background: #2e6ab1;
+    background: #be9ae5;
     color: white;
-    border: 1px solid #2e6ab1;
+    border: 1px solid #be9ae5;
   }
-  a {
+  .pagination a {
     text-decoration: none;
-    color: #105cb6;
-    border: 1px solid #9aafe5;
-    &:hover, &:focus {
+    color: #801a6d;
+    border: 1px solid #be9ae5;
+    }
+    .pagination &:hover, .pagination &:focus {
       color: #000033;
       border-color: #000033;
     }
-  }
-  .page_info {
-    background: #2e6ab1;
+
+  .pagination .page_info {
+    background: #fb1ec7;
     color: white;
     padding: 0.4em 0.6em;
     width: 22em;
     margin-bottom: 0.3em;
     text-align: center;
-    b {
+    }
+    .pagination b {
       color: #000033;
-      background: #2e6ab1 + 60;
+      background: #fb1ec7 + 60;
       padding: 0.1em 0.25em;
     }
-  }
-}
 
-.pagination {
-  .disabled {
-    display: none;
-  }
-  /* Rest of stylesheet omitted. */
-}
+
+
 #sidebar {
 	width: 250px;
 	position: fixed;

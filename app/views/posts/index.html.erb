@@ -1,5 +1,5 @@
 <div id="posts">
-  <%= will_paginate @posts %>
+  <%= will_paginate @posts, previous_label: h("<"), next_label: h(">") %>
 
   <% @posts.each do |post|  %>
      <div class="post_wrapper">
@@ -14,5 +14,5 @@
             Number of amount: <%= post.amount %>
           </p>
      </div>
-  <% end %>>
+  <% end %>
 </div>

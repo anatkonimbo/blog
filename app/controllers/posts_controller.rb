@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
 
   def index
-      @posts = Post.all
+      # @posts = Post.all
       # @post.average_rate
-      @Post = Post.order("title").page(params[:page]).per_page(2)
+      @posts = Post.order("title").page(params[:page]).per_page(2)
   end
 
   def new
