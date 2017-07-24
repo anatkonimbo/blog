@@ -11,8 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+ActiveRecord::Schema.define(:version => 20170724062315) do
 
-ActiveRecord::Schema.define(:version => 20170719064807) do
+  create_table "comment_hierarchies", :id => false, :force => true do |t|
+    t.integer "ancestor_id",   :null => false
+    t.integer "descendant_id", :null => false
+    t.integer "generations",   :null => false
+  end
+
+  add_index "comment_hierarchies", ["ancestor_id", "descendant_id", "generations"], :name => "comment_anc_desc_udx", :unique => true
+  add_index "comment_hierarchies", ["descendant_id"], :name => "comment_desc_idx"
 
   create_table "comments", :force => true do |t|
     t.string   "name"
@@ -26,19 +34,27 @@ ActiveRecord::Schema.define(:version => 20170719064807) do
     t.boolean  "showCom"
     t.string   "tags"
     t.integer  "parent_id"
-
   end
 
   add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
 
+  create_table "pages", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "amount"
     t.float    "avrRate"
     t.string   "tags"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "users", :force => true do |t|

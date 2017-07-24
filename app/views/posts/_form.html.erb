@@ -1,4 +1,6 @@
-<%= form_for @post do |f| %>
+<%= tinymce_assets %>
+
+<%= form_for @post, :html => { :multipart => true } do |f| %>
   <% if @post.errors.any? %>
   <div id="error">
     <h2><%= pluralize(@post.errors.count, "error") %> preventes this post from saving</h2>
@@ -22,10 +24,16 @@
   </p>
   <p>
     <%= f.label :body %>
-    <%= f.text_area :body %>
+    <%= f.text_area :body, class: "tinymce" %>
+  </p>
+
+  <p>
+     <%= f.file_field :photo %>
   </p>
 
   <p>
     <%= f.submit %>
   </p>
 <% end %>
+
+<%= tinymce %>

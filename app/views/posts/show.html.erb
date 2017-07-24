@@ -2,19 +2,26 @@
   <h1 class="title">
     <b>Post title:  </b><%= @post.title %>
   </h1>
+  <% if @post.photo.present? %>
+    <div>
+      <%= image_tag @post.photo.url(:large) %>
+    </div>
+  <% end %>
 
-  <p class="avrRate">
-    <b>Rate post average: </b><%= @post.avrRate %>
-  </p>
+  <% if @post.avrRate.present? %>
+    <p class="avrRate">
+      <b>Rate post average: </b><%= @post.avrRate %>
+    </p>
+  <% end %>
 
-  <% if @post.tags .present? %>
+  <% if @post.tags.present? %>
     <p class="tags">
       <b>Tags Post: </b><%= raw @post.tags.split(', ').map { |t| link_to t, tag_path(t) }.join(', ')  %>
     </p>
   <% end %>
 
   <p class="body">
-    <b>Post body: </b><%= @post.body %>
+    <b>Post body: </b><%= raw @post.body %>
   </p>
 
   <p class="date">

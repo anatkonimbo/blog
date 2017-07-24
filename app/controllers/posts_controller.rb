@@ -1,9 +1,17 @@
 class PostsController < ApplicationController
 
   def index
-      # @posts = Post.all
-      # @post.average_rate
       @posts = Post.order("title").page(params[:page]).per_page(2)
+
+      respond_to do |format|
+        format.html
+        format.json {
+          render :json => @posts.to_json( :include => [:comments] )
+        }
+        format.xml {
+          render :xml => @posts.to_xml( :include => [:comments] )
+        }
+      end
   end
 
   def new
@@ -14,12 +22,23 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post.average_rate
+
+    respond_to do |format|
+      format.html
+    	format.json {
+        render :json => @post.to_json( :include => [:comments] )
+      }
+      format.xml {
+        render :xml => @post.to_xml( :include => [:comments] )
+      }
+    end
+
   end
 
 
   def create
     @post = Post.new(post_params)
-    @post.calcu
+    # @post.calcu
 
     if @post.save
       redirect_to @post
@@ -35,9 +54,9 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.calcu
+    # @post.calcu
 
-    if @post.update_attributes(params[:post].permit(:title, :tags, :body, :amount, :avrRate))
+    if @post.update_attributes(params[:post].permit(:title, :tags, :body, :amount, :avrRate, :photo))
       redirect_to @post
     else
       render 'edit'
@@ -52,8 +71,16 @@ class PostsController < ApplicationController
   end
 
 
-  private
+private
+
   def post_params
-    params.require(:post).permit(:title, :tags, :body, :amount, :avrRate)
+    params.require(:post).permit(:title, :tags, :body, :amount, :avrRate, :photo)
+  end
+
+  def authenticate
+    debugger
+    authenticate_or_request_with_http_basic do |username, password|
+      username == "anat" && password == "konimbo"
+    end
   end
 end

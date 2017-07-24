@@ -39,3 +39,7 @@ gem 'strong_parameters'
 gem 'debugger'
 
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+
+gem 'paperclip', '~> 4.3', '>= 4.3.6'
+
+gem 'tinymce-rails', '~> 4.3', '>= 4.3.13'
