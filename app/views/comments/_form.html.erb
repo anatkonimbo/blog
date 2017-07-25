@@ -1,7 +1,7 @@
 <%= form_for ([@post, @comment.present? ? @comment : @post.comments.build]) do |f| %>
   <p>
-    <%= f.label :fullname %> </br>
-    <%= f.text_field :fullname %>
+    <%= f.label :full_name %> </br>
+    <%= f.text_field :full_name %>
   </p>
 
   <p>
@@ -15,11 +15,11 @@
   </p>
 
   <p>
-      rate:  <%= f.select :rate, (0..5) %>
+      rates:  <%= f.select :rates, (0..5) %>
   </p>
 
   <p>
-      Show comment: <%= f.check_box :showCom %>
+      Show comment: <%= f.check_box :show_comment %>
   </p>
 
   <p>
