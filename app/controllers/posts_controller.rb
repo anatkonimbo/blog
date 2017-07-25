@@ -1,12 +1,10 @@
 class PostsController < ApplicationController
-
+PER_PAGE = 2
   def index
-      # @posts = Post.order("title").page(params[:page]).per_page(2)
-      # @posts = Post.search(params[:search])
       @posts = Post.order("title")
       @posts = @posts.search(params[:search])
-      @posts = @posts.page(params[:page]).per_page(2)
-      
+      @posts = Post.order("title").page(params[:page]).per_page(PER_PAGE)
+
       respond_to do |format|
         format.html
         format.json {
@@ -42,7 +40,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    # @post.calcu
+    # @post.calculate_number_of_words
 
     if @post.save
       redirect_to @post
@@ -58,9 +56,9 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    # @post.calcu
+    # @post.calculate_number_of_words
 
-    if @post.update_attributes(params[:post].permit(:title, :tags, :body, :amount, :avrRate, :photo, :email))
+    if @post.update_attributes(params[:post].permit(:title, :tags, :body, :amount, :avr_rates, :photo, :email))
       redirect_to @post
     else
       render 'edit'
@@ -78,11 +76,10 @@ class PostsController < ApplicationController
 private
 
   def post_params
-    params.require(:post).permit(:title, :tags, :body, :amount, :avrRate, :photo, :email)
+    params.require(:post).permit(:title, :tags, :body, :amount, :avr_rates, :photo, :email)
   end
 
   def authenticate
-    debugger
     authenticate_or_request_with_http_basic do |username, password|
       username == "anat" && password == "konimbo"
     end
