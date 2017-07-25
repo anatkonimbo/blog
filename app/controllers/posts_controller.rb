@@ -1,9 +1,12 @@
 class PostsController < ApplicationController
 
   def index
-      @posts = Post.order("title").page(params[:page]).per_page(2)
+      # @posts = Post.order("title").page(params[:page]).per_page(2)
       # @posts = Post.search(params[:search])
-
+      @posts = Post.order("title")
+      @posts = @posts.search(params[:search])
+      @posts = @posts.page(params[:page]).per_page(2)
+      
       respond_to do |format|
         format.html
         format.json {
