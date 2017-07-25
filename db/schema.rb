@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170725052024) do
+ActiveRecord::Schema.define(:version => 20170725102323) do
 
   create_table "comment_hierarchies", :id => false, :force => true do |t|
     t.integer "ancestor_id",   :null => false
@@ -26,12 +26,12 @@ ActiveRecord::Schema.define(:version => 20170725052024) do
     t.string   "name"
     t.text     "body"
     t.integer  "post_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "lastname"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "last_name"
     t.integer  "tel"
-    t.integer  "rate"
-    t.boolean  "showCom"
+    t.integer  "rates"
+    t.boolean  "show_comment"
     t.string   "tags"
     t.integer  "parent_id"
   end
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20170725052024) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.integer  "amount"
-    t.float    "avrRate"
+    t.float    "avr_rates"
     t.string   "tags"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
