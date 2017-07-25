@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170724062315) do
+ActiveRecord::Schema.define(:version => 20170725052024) do
 
   create_table "comment_hierarchies", :id => false, :force => true do |t|
     t.integer "ancestor_id",   :null => false
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20170724062315) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.string   "email"
   end
 
   create_table "users", :force => true do |t|

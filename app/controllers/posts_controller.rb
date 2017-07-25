@@ -56,7 +56,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     # @post.calcu
 
-    if @post.update_attributes(params[:post].permit(:title, :tags, :body, :amount, :avrRate, :photo))
+    if @post.update_attributes(params[:post].permit(:title, :tags, :body, :amount, :avrRate, :photo, :email))
       redirect_to @post
     else
       render 'edit'
@@ -74,7 +74,7 @@ class PostsController < ApplicationController
 private
 
   def post_params
-    params.require(:post).permit(:title, :tags, :body, :amount, :avrRate, :photo)
+    params.require(:post).permit(:title, :tags, :body, :amount, :avrRate, :photo, :email)
   end
 
   def authenticate

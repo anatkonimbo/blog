@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   include ActiveModel::Serializers::JSON
 
   has_many :comments, dependent: :destroy
-  attr_accessible :body, :title, :amount, :avrRate, :tags, :photo
+  attr_accessible :body, :title, :amount, :avrRate, :tags, :photo, :email
 
   validates :title, presence: true, length: { minimum: 5 }
   validates :body, presence: true

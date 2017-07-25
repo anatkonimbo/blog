@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(params[:comment].permit(:body, :tel, :rate, :fullname))
 
     if @comment.save
+      PostMailer.new_comment(@post).deliver
       redirect_to post_path(@post)
     else
       render 'posts/show'
