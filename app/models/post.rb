@@ -30,5 +30,12 @@ class Post < ActiveRecord::Base
       self.avrRate = (arr_rate.sum / arr_rate.size.to_f).round(2)
   end
 
-
+  def self.search(search)
+    if search
+      debugger
+      find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
 end

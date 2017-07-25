@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def index
       @posts = Post.order("title").page(params[:page]).per_page(2)
+      # @posts = Post.search(params[:search])
 
       respond_to do |format|
         format.html
