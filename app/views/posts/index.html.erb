@@ -1,18 +1,4 @@
 <div id="posts">
   <%= will_paginate @posts, previous_label: h("<"), next_label: h(">") %>
-
-  <% @posts.each do |post|  %>
-     <div class="post_wrapper">
-          <h2 class="title">
-            Title: <%= link_to post.title , post %>
-          </h2>
-          <p>Tags: <%= post.tags %></p>
-          <p class="date">
-            Created at: <%= post.created_at.strftime("%B, %d, %Y") %>
-          </p>
-          <p class="amount">
-            Number of amount: <%= post.amount %>
-          </p>
-     </div>
-  <% end %>
+  <%= render 'post' %>
 </div>
