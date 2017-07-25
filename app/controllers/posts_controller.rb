@@ -1,9 +1,7 @@
 class PostsController < ApplicationController
-PER_PAGE = 2
+PER_PAGE = 5
   def index
-      @posts = Post.order("title")
-      @posts = @posts.search(params[:search])
-      @posts = Post.order("title").page(params[:page]).per_page(PER_PAGE)
+      @posts = Post.order("title").page(params[:page]).per_page(PER_PAGE).search(params[:search])
 
       respond_to do |format|
         format.html
