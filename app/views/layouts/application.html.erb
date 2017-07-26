@@ -17,6 +17,10 @@
        <% end %>
   </div>
 
+  <div id="tag_count">
+    <%= Post.number_of_tags %>
+  </div>
+
   <ul>
     <li class="category">Website</li>
     <li><%= link_to "Blog", root_path %></li>

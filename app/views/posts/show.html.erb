@@ -22,7 +22,7 @@
 
   <% if @post.tags.present? %>
     <p class="tags">
-      <b>Tags Post: </b><%= raw @post.tags.split(', ').map { |t| link_to t, tag_path(t) }.join(', ')  %>
+      <b>Tags Post: </b><%= raw @post.tags.collect { |t| link_to t, tag_path(t) }.join(', ')  %>
     </p>
   <% end %>
 

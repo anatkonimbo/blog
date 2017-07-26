@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   include ActiveModel::Serializers::JSON
+  serialize :tags, Array
 
   has_many :comments, dependent: :destroy
   attr_accessible :body, :title, :amount, :avr_rates, :tags, :photo, :email
@@ -16,6 +17,7 @@ class Post < ActiveRecord::Base
   validates_attachment_presence :photo
   validates_attachment_size :photo, :less_than => 5.megabytes
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
+
 
   def calculate_number_of_words
     total_value = 30
@@ -45,6 +47,26 @@ class Post < ActiveRecord::Base
             :comments => {:only => [:body, :name, :last_name]}
           }
     )
+  end
+
+  # setter
+  def tags=(val)
+    if val.present?
+      tags_arr = val.split(', ').compact
+      write_attribute(:tags, tags_arr)
+    end
+  end
+
+  #getter
+  def tags
+    read_attribute(:tags)
+  end
+
+
+  def self.number_of_tags
+    array_of_tags = Post.all.collect{|t| t.tags}.flatten
+    h = array_of_tags.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1 }
+    h.each {|key, value| puts "#{key} is #{value}" }
   end
 
 end
