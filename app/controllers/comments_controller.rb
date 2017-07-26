@@ -6,8 +6,9 @@ class CommentsController < ApplicationController
 
     if @comment.save
       PostMailer.new_comment(@post).deliver
-      
+
       respond_to do |format|
+        debugger
         format.html { redirect_to post_path(@post) }
         format.js
       end
