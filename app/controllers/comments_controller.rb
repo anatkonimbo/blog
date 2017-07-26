@@ -6,10 +6,16 @@ class CommentsController < ApplicationController
 
     if @comment.save
       PostMailer.new_comment(@post).deliver
-      redirect_to post_path(@post)
+      
+      respond_to do |format|
+        format.html { redirect_to post_path(@post) }
+        format.js
+      end
     else
       render 'posts/show'
     end
+
+
   end
 
   def edit
