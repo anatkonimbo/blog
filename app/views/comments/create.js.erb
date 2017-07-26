@@ -1,3 +1,4 @@
 $("div#comments h2").html("<%= pluralize(@post.comments.count, 'comments') %>");
 $("div#comments").append("<%= escape_javascript(render(:partial => @comment)) %>");
 $("#new_comment")[0].reset();
+$("#comments").html("<%= escape_javascript(render @post.comments) %>");
