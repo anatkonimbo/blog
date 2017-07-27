@@ -5,6 +5,15 @@
   </p>
 <% end %>
 
+
+<%= form_tag posts_path, :method => 'get' do %>
+  <p>
+    <%= select_tag "options_order", options_for_select(Post::ORDER_OPTION) %>
+    <%= submit_tag "Update" %>
+  </p>
+<% end %>
+
+
 <div id="posts">
   <%= will_paginate @posts, previous_label: h("<"), next_label: h(">") %>
   <%= render 'post' %>

@@ -1,5 +1,7 @@
 class Post < ActiveRecord::Base
   include ActiveModel::Serializers::JSON
+  ORDER_OPTION = ['id', 'title', 'amount']
+
   serialize :tags, Array
 
   has_many :comments, dependent: :destroy

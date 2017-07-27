@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
 PER_PAGE = 5
+
   def index
-      @posts = Post.order("title").page(params[:page]).per_page(PER_PAGE).search(params[:search])
+      order_option = params["options_order"]
+      @posts = Post.order(order_option).page(params[:page]).per_page(PER_PAGE).search(params[:search])
 
       respond_to do |format|
         format.html
