@@ -59,6 +59,8 @@ module Blog
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    config.i18n.available_locales = [:en, :he]
+
 
   end
 end

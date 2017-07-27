@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
+PER_PAGE = 5
 
   def index
-      @posts = Post.order("title").page(params[:page]).per_page(2)
+      @posts = Post.order(params["options_order"]).page(params[:page]).per_page(PER_PAGE).search(params[:search])
 
       respond_to do |format|
         format.html
@@ -38,7 +39,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    # @post.calcu
 
     if @post.save
       redirect_to @post
@@ -54,9 +54,8 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    # @post.calcu
 
-    if @post.update_attributes(params[:post].permit(:title, :tags, :body, :amount, :avrRate, :photo, :email))
+    if @post.update_attributes(params[:post].permit(:title, :tags, :body, :amount, :avr_rates, :photo, :email))
       redirect_to @post
     else
       render 'edit'
@@ -70,17 +69,16 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def change_language
+    I18n.locale = 'he' || I18n.default_locale
+
+    redirect_to :back
+  end
 
 private
 
   def post_params
-    params.require(:post).permit(:title, :tags, :body, :amount, :avrRate, :photo, :email)
+    params.require(:post).permit(:title, :tags, :body, :amount, :avr_rates, :photo, :email)
   end
 
-  def authenticate
-    debugger
-    authenticate_or_request_with_http_basic do |username, password|
-      username == "anat" && password == "konimbo"
-    end
-  end
 end
