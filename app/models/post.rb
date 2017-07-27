@@ -64,9 +64,10 @@ class Post < ActiveRecord::Base
 
 
   def self.number_of_tags
+    h = ""
     array_of_tags = Post.all.collect{|t| t.tags}.flatten
     h = array_of_tags.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1 }
-    h.each {|key, value| puts "#{key} is #{value}" }
+    h
   end
 
 end

@@ -17,8 +17,13 @@
        <% end %>
   </div>
 
-  <div id="tag_count">
-    <%= Post.number_of_tags %>
+  <div id="tags_counter">
+    <h3><b>The number of tags:</b></h3>
+    <ul id="tag_count">
+      <% Post.number_of_tags.each do |key, value| %>
+        <li> <%= "#{key} is #{value}"  %></li>
+      <% end %>
+    </il>
   </div>
 
   <ul>
