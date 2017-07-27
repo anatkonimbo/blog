@@ -8,9 +8,9 @@
     </div>
   <% end %>
 
-  <% if @post.avrRate.present? %>
+  <% if @post.avr_rates.present? %>
     <p class="avrRate">
-      <b>Rate post average: </b><%= @post.avrRate %>
+      <b>Rate post average: </b><%= @post.avr_rates %>
     </p>
   <% end %>
 
@@ -22,7 +22,7 @@
 
   <% if @post.tags.present? %>
     <p class="tags">
-      <b>Tags Post: </b><%= raw @post.tags.split(', ').map { |t| link_to t, tag_path(t) }.join(', ')  %>
+      <b>Tags Post: </b><%= raw @post.tags.collect { |t| link_to t, tag_path(t) }.join(', ')  %>
     </p>
   <% end %>
 
@@ -55,7 +55,10 @@
     <h2><%= @post.comments.count %> comments</h2>
     <%= render @post.comments.saved_comments %>
 
-    <h3>add a comment:</h3>
-    <%= render "comments/form" %>
+    <div id="new_comments">
+      <h3>add a comment:</h3>
+      <%= render "comments/form" %>
+    </div>
+
   </div>
 </div>
