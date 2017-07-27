@@ -4,6 +4,7 @@
   <title>Blog</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "javascripts/jquery-3.2.1.min" %>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="screen, projection">
 
   <%= csrf_meta_tags %>
@@ -12,8 +13,17 @@
 <div id="sidebar">
   <div id="logo">
     <%= link_to root_path do %>
-       <%= image_tag "logo.svg" %>
+       <%= image_tag "logo.png" %>
        <% end %>
+  </div>
+
+  <div id="tags_counter">
+    <h3><b>The number of tags:</b></h3>
+    <ul id="tag_count">
+      <% Post.number_of_tags.each do |key, value| %>
+        <li> <%= "#{key} is #{value}"  %></li>
+      <% end %>
+    </il>
   </div>
 
   <ul>
