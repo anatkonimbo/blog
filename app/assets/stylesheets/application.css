@@ -78,6 +78,17 @@ div#tags_counter {
     margin: 15px;
     padding: 5px;
 }
+div#tags_counter h3 {
+    text-align: center;
+}
+div#logo {
+    width: 250px;
+    height: 130px;
+}
+div#logo * {
+    width: 250px;
+    height: auto;
+}
 .pagination {
   background: white;
   cursor: default;
