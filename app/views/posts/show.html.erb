@@ -1,6 +1,6 @@
 <div id="post_content">
   <h1 class="title">
-    <b>Post title:  </b><%= @post.title %>
+    <b><%= t 'post_content.title' %> </b><%= @post.title %>
   </h1>
   <% if @post.photo.present? %>
     <div>
@@ -10,24 +10,24 @@
 
   <% if @post.avr_rates.present? %>
     <p class="avrRate">
-      <b>Rate post average: </b><%= @post.avr_rates %>
+      <b><%= t 'post_content.rate' %> </b><%= @post.avr_rates %>
     </p>
   <% end %>
 
   <% if @post.email.present? %>
     <p class="email">
-      <b>Email: </b><%= @post.email  %>
+      <b><%= t 'post_content.email' %> </b><%= @post.email  %>
     </p>
   <% end %>
 
   <% if @post.tags.present? %>
     <p class="tags">
-      <b>Tags Post: </b><%= raw @post.tags.collect { |t| link_to t, tag_path(t) }.join(', ')  %>
+      <b><%= t 'post_content.tags' %> </b><%= raw @post.tags.collect { |t| link_to t, tag_path(t) }.join(', ')  %>
     </p>
   <% end %>
 
   <p class="body">
-    <b>Post body: </b><%= raw @post.body %>
+    <b><%= t 'post_content.body' %>  </b><%= raw @post.body %>
   </p>
 
   <p class="date">
@@ -56,7 +56,7 @@
     <%= render @post.comments.saved_comments %>
 
     <div id="new_comments">
-      <h3>add a comment:</h3>
+      <h3><%= t 'post_content.comment' %> </h3>
       <%= render "comments/form" %>
     </div>
 

@@ -2,8 +2,7 @@ class PostsController < ApplicationController
 PER_PAGE = 5
 
   def index
-      order_option = params["options_order"]
-      @posts = Post.order(order_option).page(params[:page]).per_page(PER_PAGE).search(params[:search])
+      @posts = Post.order(params["options_order"]).page(params[:page]).per_page(PER_PAGE).search(params[:search])
 
       respond_to do |format|
         format.html
@@ -40,7 +39,6 @@ PER_PAGE = 5
 
   def create
     @post = Post.new(post_params)
-    # @post.calculate_number_of_words
 
     if @post.save
       redirect_to @post
@@ -56,7 +54,6 @@ PER_PAGE = 5
 
   def update
     @post = Post.find(params[:id])
-    # @post.calculate_number_of_words
 
     if @post.update_attributes(params[:post].permit(:title, :tags, :body, :amount, :avr_rates, :photo, :email))
       redirect_to @post
@@ -72,6 +69,11 @@ PER_PAGE = 5
     redirect_to root_path
   end
 
+  def change_language
+    I18n.locale = 'he' || I18n.default_locale
+
+    redirect_to :back
+  end
 
 private
 
@@ -79,9 +81,4 @@ private
     params.require(:post).permit(:title, :tags, :body, :amount, :avr_rates, :photo, :email)
   end
 
-  def authenticate
-    authenticate_or_request_with_http_basic do |username, password|
-      username == "anat" && password == "konimbo"
-    end
-  end
 end

@@ -10,5 +10,5 @@ resources :posts do
 end
 
 get '/about', to: 'pages#about'
-
+get '/change_language', to: "posts#change_language"
 end
